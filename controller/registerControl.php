@@ -24,7 +24,7 @@
                     array_push($errors, "Password does not match");
                 }
 
-                require_once "database.php";
+                require_once "../database.php";
                 $sql1 = "SELECT * FROM users WHERE username = '$username'";
                 $result = mysqli_query($conn, $sql1);
                 $rowCount = mysqli_num_rows($result);
