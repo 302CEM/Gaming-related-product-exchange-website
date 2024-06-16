@@ -22,18 +22,18 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="../public/index.php">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Hobby</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Main Cat</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">Games</a></li>
+              <li><a class="dropdown-item" href="#">Sub Cat</a></li>
               <li><a class="dropdown-item" href="#">Games Consoles</a></li>
-              <li><a class="dropdown-item" href="#">Merch</a></li>
+              <li><a class="dropdown-item" href="#">Others</a></li>
             </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="search.php">Search</a>
+          <a class="nav-link" aria-current="page" href="#">Search</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Info</a>
@@ -52,15 +52,15 @@
       <span class="navbar-text">
         <?php
             if(empty($_SESSION['username'])){
-                echo "<a class='nav-link' href='public/login.php'>Login</a>";
+                echo "<a class='nav-link' href='../public/login.php'>Login</a>";
             }
             else {
-              /*if($_SESSION['role'] == 'admin'){
-                echo "<a class='nav-link' href='admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
-                echo "<span class='navbar-text'><a class='nav-link' href='user.php' style='margin-left: 20px'>User</a>";
+              if($_SESSION['role'] == 'admin'){
+                echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
+                echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
               }else{
-                echo "<a class='nav-link' href='user.php'><img src='logos/user_icon.png' width='50' height='50' ></a>";
-              }        for later admin panel*/
+                echo "<a class='nav-link' href='../user/user.php'><img src='logo/user_icon.png' width='50' height='50' ></a>";
+              }        
             }
         ?>
       </span>
@@ -70,7 +70,7 @@
                 
             }
             else {
-                echo '<a class="nav-link" href="public/logout.php">Logout</a>';
+                echo '<a class="nav-link" href="../public/logout.php">Logout</a>';
             }
         ?>
       </span>
