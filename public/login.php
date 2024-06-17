@@ -5,7 +5,6 @@
             if(isset($_POST['login'])) {
                 $loginusername = $_POST['username'];
                 $loginpassword = $_POST['password'];
-                require_once "../database.php";
                 $sql1 = "SELECT * FROM users WHERE username = '$loginusername'";
                 $result1 = mysqli_query($conn, $sql1);
                 $login = mysqli_fetch_array($result1, MYSQLI_ASSOC);

@@ -87,14 +87,21 @@
       <aside class="col">
         <nav id="sidebarMenu" class="d-lg-block sidebar bg-white" style="max-width: 200px; margin-top: 30px;">
         <div class="list-group list-group-flush mx-0.5 mt-3">
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Normal User page</span>
+            <a href="../user/user.php" class="list-group-item list-group-item-action py-2 ripple" >
+                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>User page</span>
             </a>
-            <a class="list-group-item list-group-item-action py-2 ripple" href="admin.php">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Admin Page</span>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=">
+                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Own item listing |ALL|</span>
             </a>
-            <a class="list-group-item list-group-item-action py-2 ripple" href="categoryAdd.php">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Add Category</span>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=1">
+                  <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Pending approval/No request</span>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=2">
+                  <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Approved</span>
+            </a>
+            <a href="../user/userApplication.php" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"
+               data-mdb-toggle="collapse" href="#collapseExample1" aria-expanded="true" aria-controls="collapseExample2">
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>Rent/Buy/Trade Request</span>
             </a>
         </div>
         </nav>
