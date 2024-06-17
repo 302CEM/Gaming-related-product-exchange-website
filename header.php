@@ -18,7 +18,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="margin-bottom: 20px;">
   <div class="container-xxl py-5-fluid">
     <a class="navbar-brand" href="#"><img src="../logo/Hobby_Logo.png" width="160" height="70"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" 
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -28,13 +29,15 @@
         </li>
         <?php foreach($mainNavs as $row) :?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $row["catValue"];?></a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
+              <?php echo $row["catValue"];?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <?php 
                 $mainNav = $row["catValue"];
                 $subNavs = mysqli_query($conn, "SELECT * FROM subcategory WHERE catValue = '$mainNav'");
                 foreach($subNavs as $sub) :?>
-                <li><a class="dropdown-item" href="#"><?php echo $sub["subValue"];?></a></li>
+                <li><a class="dropdown-item" href="../public/cateIndex.php?cate=<?php echo $sub["subValue"];?>">
+                  <?php echo $sub["subValue"];?></a></li>
               <?php endforeach;  ?>
             </ul>
         </li>

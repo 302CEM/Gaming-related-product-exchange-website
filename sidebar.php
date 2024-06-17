@@ -28,13 +28,15 @@
         </li>
         <?php foreach($mainNavs as $row) :?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $row["catValue"];?></a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
+              <?php echo $row["catValue"];?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <?php 
                 $mainNav = $row["catValue"];
                 $subNavs = mysqli_query($conn, "SELECT * FROM subcategory WHERE catValue = '$mainNav'");
                 foreach($subNavs as $sub) :?>
-                <li><a class="dropdown-item" href="#"><?php echo $sub["subValue"];?></a></li>
+                <li><a class="dropdown-item" href="../public/cateIndex.php?cate=<?php echo $sub["subValue"];?>">
+                  <?php echo $sub["subValue"];?></a></li>
               <?php endforeach;  ?>
             </ul>
         </li>
@@ -53,16 +55,7 @@
       <span class="navbar-text">
         <?php
             if(empty($_SESSION['username'])){
-                echo "<a class='nav-link' href='../public/login.php'>Login</a>";
-            }
-            else {
-                if($_SESSION['role'] == 'admin'){ ?>
-                    <a class='nav-link' href='admin.php' style='margin-left: 20px'>Admin Portal</a></span>
-                    <span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a> 
-                <?php 
-                }else{ ?>
-                    <meta http-equiv="Refresh" content="1; url=../public/index.php">
-                <?php }
+                echo '<meta http-equiv="Refresh" content="1; url=../public/index.php">';
             }
         ?>
       </span>
