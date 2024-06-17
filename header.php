@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include "../database.php";
+    $mainNavs = mysqli_query($conn, "SELECT * FROM maincategory ORDER BY catID ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,30 +26,29 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="../public/index.php">Home</a>
         </li>
+        <?php foreach($mainNavs as $row) :?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Main Cat</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $row["catValue"];?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">Sub Cat</a></li>
-              <li><a class="dropdown-item" href="#">Games Consoles</a></li>
-              <li><a class="dropdown-item" href="#">Others</a></li>
+              <?php 
+                $mainNav = $row["catValue"];
+                $subNavs = mysqli_query($conn, "SELECT * FROM subcategory WHERE catValue = '$mainNav'");
+                foreach($subNavs as $sub) :?>
+                <li><a class="dropdown-item" href="#"><?php echo $sub["subValue"];?></a></li>
+              <?php endforeach;  ?>
             </ul>
         </li>
+        <?php endforeach; ?>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#">Search</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Info</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">All</a></li>
-            </ul>
-        </li>
         <?php
             if(empty($_SESSION['username'])){}
-            else {
-                //echo "<li class='nav-item'><a class='nav-link' href=''>user can see</a></li>";
-            }
-            
-        ?>
+            else { ?>
+              <li class="nav-item">
+              <a class="nav-link" href="../user/addItem.php" aria-current="page" href="#">Add Item</a>
+            </li>
+            <?php } ?>
       </ul>
       <span class="navbar-text">
         <?php
@@ -59,7 +60,7 @@
                 echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
                 echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
               }else{
-                echo "<a class='nav-link' href='../user/user.php'><img src='logo/user_icon.png' width='50' height='50' ></a>";
+                echo "<a class='nav-link' href='../user/user.php'><img src='../logo/user_icon.png' width='50' height='50' ></a>";
               }        
             }
         ?>

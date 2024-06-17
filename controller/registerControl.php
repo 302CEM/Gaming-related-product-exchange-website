@@ -24,7 +24,6 @@
                     array_push($errors, "Password does not match");
                 }
 
-                require_once "../database.php";
                 $sql1 = "SELECT * FROM users WHERE username = '$username'";
                 $result = mysqli_query($conn, $sql1);
                 $rowCount = mysqli_num_rows($result);
@@ -45,8 +44,7 @@
                     }
                 }else{
                     // insert data into database
-                    
-
+                    include_once "../database.php";
                     //echo "<div class='alert alert-danger'>Database connected</div>";
                     $sql = "INSERT INTO users(username, userEmail, userrole, userPass) VALUES (?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($conn);
