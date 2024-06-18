@@ -12,16 +12,3 @@ $("#mainCat").change(function() {
     }
 });
 $("#mainCat").trigger("change");
-
-$("#rentOrSell").change(function() {
-    if ($(this).val() == "sell" || $(this).val() == "trade") {
-        $('#deposit').hide();
-        $('#depositText').removeAttr('required');
-        $('#depositText').removeAttr('data-error');		
-    } else {
-        $('#deposit').show();
-        $('#depositText').attr('required','');
-        $('#depositText').attr('data-error', 'This field is required.');
-    }
-});
-$("#rentOrSell").trigger("change");

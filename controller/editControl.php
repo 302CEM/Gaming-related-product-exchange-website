@@ -6,7 +6,8 @@
     else{
     $userId = $_SESSION['id'];
 
-    if(isset($_POST["add"])){
+    if(isset($_POST["edit"])){
+        $itemid = $_POST["itemID"];
         $itemname = $_POST["itemname"];
         $mainCat = $_POST["mainCat"];
         $subCat = $_POST["subCat"];
@@ -14,8 +15,11 @@
         $price = $_POST["price"];
         $area = $_POST["area"];
         $information = $_POST["information"];
-        $status = "not";
 
+        if(empty($itemid)){
+            echo '<a href=\"javascript:history.go(-1)\">Error. Please click here to GO BACK</a>';
+            die("Item ID is missing...");
+        }
         if(empty($_POST["deposits"])){
             $deposit = "0";
         }
@@ -39,6 +43,8 @@
         if (count($errors) > 0){
             foreach ($errors as $error){
                 echo "<div class='alert alert-danger'>$error</div>";
+                echo "<a href=\"javascript:history.go(-1)\" style='color:red;'><h3>Error. Please click here to GO BACK</h3></a>";
+                die();
             }
         }
         else{
@@ -61,19 +67,12 @@
                 $newImageName .= '.' . $imageExtension;
 
                 move_uploaded_file($tmpname, '../img/'. $newImageName);
-                $sql = "INSERT INTO items
-                        (itemname,itemPicture, mainCat, subCat, exchange, deposit, 
-                            price, area, information, itemStatus, userID)
-                        VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    $stmt = mysqli_stmt_init($conn);
-                    $preparestmt = mysqli_stmt_prepare($stmt, $sql);
-                    if ($preparestmt){
-                        mysqli_stmt_bind_param($stmt, "ssssssssssi", 
-                            $itemname,$newImageName, $mainCat, $subCat, $type, $deposit, 
-                                $price, $area, $information, $status, $userId);
-                        mysqli_stmt_execute($stmt);
-                        echo "<div class='alert alert-success'>Added Succesfully</div>";
-                        echo '<meta http-equiv="Refresh" content="2; url=../public/index.php">';
+                $sql2 = "UPDATE items SET itemname = '$itemname',itemPicture = '$newImageName', mainCat = '$mainCat', 
+                        subCat = '$subCat', exchange = '$type', deposit = '$deposit', price = '$price', area = '$area', 
+                        information = '$information' WHERE userID ='$userId' AND itemID ='$itemid' ";
+                    if (mysqli_query($conn, $sql2)){
+                        echo "<div class='alert alert-success'>Edited Succesfully</div>";
+                        echo '<meta http-equiv="Refresh" content="2; url=../user/userOwnItem.php">';
 
                     }else{
                         die("Something went wrong.");
