@@ -24,6 +24,7 @@
                     array_push($errors, "Password does not match");
                 }
 
+                include_once "../database.php";
                 $sql1 = "SELECT * FROM users WHERE username = '$username'";
                 $result = mysqli_query($conn, $sql1);
                 $rowCount = mysqli_num_rows($result);
@@ -44,7 +45,7 @@
                     }
                 }else{
                     // insert data into database
-                    include_once "../database.php";
+
                     //echo "<div class='alert alert-danger'>Database connected</div>";
                     $sql = "INSERT INTO users(username, userEmail, userrole, userPass) VALUES (?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($conn);
@@ -53,7 +54,7 @@
                         mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $userrole, $passworHash);
                         mysqli_stmt_execute($stmt);
                         echo "<div class='alert alert-success'>Registered Succesfully</div>";
-                        header("refresh:2, url=login.php");
+                        header("refresh:2, url=../public/login.php");
 
                     }else{
                         die("Something went wrong.");

@@ -1,6 +1,6 @@
 <?php 
     require "../sidebar.php"; ?>
-<main class="col-lg-10">
+<main class="col-lg-11 bg-white">
         <div class="ps">
             <br/><br/><h1>User Page</h1>
         </div>

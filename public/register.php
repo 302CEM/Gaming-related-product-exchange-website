@@ -33,7 +33,7 @@
                 <input type="submit" class="btn btn-primary" value="Register" name="submit">
             </div>
             <br/><span id="linkToLoginPage" class="form-text">
-                Already have an account? Click <a href="public/login.php">HERE</a> to login.
+                Already have an account? Click <a href="../public/login.php">HERE</a> to login.
             </span>
             
         </form>

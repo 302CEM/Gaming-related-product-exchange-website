@@ -55,24 +55,24 @@
             <?php if(!empty($_SESSION['id'])){
                 if($_SESSION['id'] != $item['userID']){ 
                     if($item["exchange"] == "Rent, Sell and Trade"){?>
-                        <a href="rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
-                        <a href="buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
-                        <a href="trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
+                        <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
+                        <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
+                        <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php } elseif($item["exchange"] == "Rent and Sell only"){?>
                         <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
                         <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
                     <?php } elseif($item["exchange"] == "Rent and Trade only"){?>
-                        <a href="rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
-                        <a href="trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
+                        <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
+                        <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php } elseif($item["exchange"] == "Sell and Trade only"){?>
-                        <a href="buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
-                        <a href="trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
+                        <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
+                        <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php } elseif($item["exchange"] == "Rent only"){?>
-                        <a href="rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
+                        <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
                     <?php } elseif($item["exchange"] == "Sell only"){?>
-                        <a href="buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
+                        <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
                     <?php } elseif($item["exchange"] == "Trade only"){?>
-                        <a href="trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
+                        <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php }?>
                 </main>
                 </div>

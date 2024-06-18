@@ -46,7 +46,9 @@
           <a class="nav-link" aria-current="page" href="#">Search</a>
         </li>
         <?php
-            if(empty($_SESSION['username'])){}
+            if(empty($_SESSION['username'])){
+              echo '<meta http-equiv="Refresh" content="2; url=../public/login.php">';
+            }
             else {
                 echo "<li class='nav-item'><a class='nav-link' href='../user/addItem.php'>Add item</a></li>";
             }
@@ -55,11 +57,19 @@
       <span class="navbar-text">
         <?php
             if(empty($_SESSION['username'])){
-                echo '<meta http-equiv="Refresh" content="1; url=../public/index.php">';
+                echo "<a class='nav-link' href='../public/login.php'>Login</a>";
+            }
+            else {
+              if($_SESSION['role'] == 'admin'){
+                echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
+                echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
+              }else{
+                echo "<a class='nav-link' href='../user/user.php'><img src='../logo/user_icon.png' width='50' height='50' ></a>";
+              }        
             }
         ?>
       </span>
-      <span class="navbar-text" style ="margin: 0 10px 0 30px ;">
+      <span class="navbar-text" style ="margin: 0 10px 0 30px; padding-right: 50px;">
         <?php
             if(empty($_SESSION['username'])){
                 
@@ -71,13 +81,12 @@
     </div>
   </div>
 </nav>
-
 </header>
 
 <body>
 <div class="container" style="margin-top: 50;">
-    <div class="row gx-10">
-      <aside class="col">
+    <div class="row">
+      <aside class="col-lg-3">
         <nav id="sidebarMenu" class="d-lg-block sidebar bg-white" style="max-width: 200px; margin-top: 30px;">
         <div class="list-group list-group-flush mx-0.5 mt-3">
             <a href="../user/user.php" class="list-group-item list-group-item-action py-2 ripple" >
@@ -92,13 +101,18 @@
             <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=2">
                   <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Approved</span>
             </a>
-            <a href="../user/userApplication.php" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"
-               data-mdb-toggle="collapse" href="#collapseExample1" aria-expanded="true" aria-controls="collapseExample2">
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>Rent/Buy/Trade Request</span>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userApplication.php">
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>Request To Rent/Buy/Trade </span>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/requestList.php" >
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>All orders</span>
             </a>
         </div>
         </nav>
       </aside>
+      </div>
+</div>
+      
       <!--<main class="col-lg-10">
         <div class="ps-lg-12">
             <br/><br/><h1>User Page</h1>

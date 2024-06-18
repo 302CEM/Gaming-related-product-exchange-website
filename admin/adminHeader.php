@@ -55,7 +55,7 @@
       <span class="navbar-text">
         <?php
             if(empty($_SESSION['username'])){
-                echo "<a class='nav-link' href='../public/login.php'>Login</a>";
+                echo '<meta http-equiv="Refresh" content="2; url=../public/login.php">';
             }
             else {
                 if($_SESSION['role'] == 'admin'){ ?>
@@ -68,7 +68,7 @@
             }
         ?>
       </span>
-      <span class="navbar-text" style ="margin: 0 10px 0 30px ;">
+      <span class="navbar-text" style ="margin: 0 10px 0 30px; padding-right: 50px;">
         <?php
             if(empty($_SESSION['username'])){
                 
@@ -89,7 +89,7 @@
       <aside class="col">
         <nav id="sidebarMenu" class="d-lg-block sidebar bg-white" style="max-width: 200px; margin-top: 30px;">
         <div class="list-group list-group-flush mx-0.5 mt-3">
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple" >
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/user.php">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Normal User page</span>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="admin.php">

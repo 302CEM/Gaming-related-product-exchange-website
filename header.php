@@ -17,7 +17,7 @@
 <header>
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="margin-bottom: 20px;">
   <div class="container-xxl py-5-fluid">
-    <a class="navbar-brand" href="#"><img src="../logo/Hobby_Logo.png" width="160" height="70"></a>
+    <a class="navbar-brand" href="../public/index.php"><img src="../logo/Hobby_Logo.png" width="160" height="70"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" 
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
             if(empty($_SESSION['username'])){}
             else { ?>
               <li class="nav-item">
-              <a class="nav-link" href="../user/addItem.php" aria-current="page" href="#">Add Item</a>
+              <a class="nav-link" href="../user/addItem.php" aria-current="page">Add Item</a>
             </li>
             <?php } ?>
       </ul>

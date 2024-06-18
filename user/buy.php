@@ -4,13 +4,9 @@
         <h1>Request</h1><br/>
         <?php
             require "../controller/requestControl.php";
-            if(empty($_GET["itemid"])){
-                echo '<a href=\"javascript:history.go(-1)\">Error. Please click here to GO BACK</a>';
-                die("Item ID is missing...");
-            }
             $itemid = $_GET["itemid"];
         ?>
-        <form action="rent.php" method="post" enctype="multipart/form-data">
+        <form action="buy.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="form-lable">Name: </label>
                 <input type="text" placeholder="Enter your name: " name="requesterName" class="form-control">
@@ -25,7 +21,7 @@
                 </textarea>
             </div>
             <div class="form-btn">
-                <input type="hidden" name="statusType" value="rent"><br/>
+                <input type="hidden" name="statusType" value="buy"><br/>
                 <input type="hidden" name="itemid" value="<?php echo $itemid;?>"><br/>
                 <input type="submit" value="Request" name="request" class="btn btn-primary">
             </div>

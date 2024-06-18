@@ -1,12 +1,12 @@
 <?php require "../sidebar.php"; ?>
-<main class="col-lg-10">
+<main class="col-lg-12 bg-white">
         <div class="ps-lg-12">
             <br/><br/><h1>Own Item listing </h1>
         </div>
-      </main>
+
     </div>
-<div class="container-fluid" style="margin-left: 100px;">
-    <table class="table table-striped" style="max-width: 1180px;"  >
+<div class="container-fluid">
+    <table class="table table-striped" style="max-width: 2100px"  >
         <thead>
             <tr>
                 <td>#</td>
@@ -34,7 +34,8 @@
                         $rows = mysqli_query($conn, "SELECT * FROM items WHERE userID = '$userId' AND itemStatus = 'not' ORDER BY userID DESC");
                     }
                     else if ($status == 2){
-                        $rows = mysqli_query($conn, "SELECT * FROM items WHERE userID = '$userId' AND itemStatus = 'accepted' ORDER BY userID DESC");
+                        $rows = mysqli_query($conn, "SELECT * FROM items WHERE (userID = '$userId' AND itemStatus = 'buy') OR 
+                        (userID = '$userId' AND itemStatus = 'rent') OR (userID = '$userId' AND itemStatus = 'trade') ORDER BY userID DESC");
                     }
                     else{
                         $rows = mysqli_query($conn, "SELECT * FROM items WHERE userID = '$userId' ORDER BY userID DESC");
@@ -58,7 +59,6 @@
         </tbody>
     </table>
 </div>
-</div>
-</div>
+</main>
 </body>
 </html>
