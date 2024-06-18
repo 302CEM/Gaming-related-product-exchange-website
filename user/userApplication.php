@@ -46,9 +46,8 @@
                 <td><?php echo $row["remarks"]; ?></td>
                 <td><?php echo $row["ownerRemarks"]; ?></td>
                 <td>
-                    <!--<a href="adoptDetails.php?applyID=<?php //echo $row["applyID"];?>" class="btn btn-info">View Application Form</a>-->
-                    <a href="editApplication.php?applyID=<?php echo $row["itemID"] ?>" class="btn btn-warning" >Edit Request</a>
-                    <a href="deleteApplication.php?applyID=<?php echo $row["itemID"] ?>" class="btn btn-danger">Delete</a>
+                    <a href="editApplication.php?requestID=<?php echo $row["requestID"] ?>" class="btn btn-warning" >Edit Request</a>
+                    <a href="deleteApplication.php?requestID=<?php echo $row["requestID"] ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             <?php endforeach; }?>
