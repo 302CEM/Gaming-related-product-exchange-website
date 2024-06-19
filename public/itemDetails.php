@@ -72,10 +72,12 @@
                         <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
                     <?php } elseif($item["exchange"] == "Trade only"){?>
                         <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
+                    <?php } elseif($item["exchange"] == "Gift"){?>
+                        <a href="../user/gift.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php }?>
             <?php }}?>
             </nav><br/>
-            
+
             <a href="../public/viewWishlist.php?userID=<?php echo $item['userID'];?>" class="btn btn-primary">View Owner Wishlist</a>
             </main>
             </div>
