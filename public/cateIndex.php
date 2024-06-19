@@ -5,7 +5,9 @@
         <?php 
             $i = 1;
             $category = $_GET['cate'];
-            $rows = mysqli_query($conn, "SELECT * FROM items WHERE subCat = '$category' ORDER BY dateCreated DESC");
+            $rows = mysqli_query($conn, "SELECT * FROM items 
+                WHERE subCat = '$category' AND itemStatus = 'not' 
+                ORDER BY dateCreated DESC");
             $result = mysqli_fetch_array($rows, MYSQLI_ASSOC);
             if($result){
                 foreach($rows as $row) :

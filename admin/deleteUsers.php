@@ -13,7 +13,12 @@
         }
         else{
             echo "<div class='alert alert-danger'>Something's wrong</div>";
+            echo '<meta http-equiv="Refresh" content="2; url=admin.php">';
         }
+    }
+    else{
+        echo "<div class='alert alert-danger'>Something's wrong</div>";
+        echo '<meta http-equiv="Refresh" content="2; url=admin.php">';
     }
 
     echo "</div>";

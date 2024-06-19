@@ -54,7 +54,7 @@
                         mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $userrole, $passworHash);
                         mysqli_stmt_execute($stmt);
                         echo "<div class='alert alert-success'>Registered Succesfully</div>";
-                        header("refresh:2, url=../public/login.php");
+                        echo '<meta http-equiv="Refresh" content="2, url=../public/login.php">';
 
                     }else{
                         die("Something went wrong.");

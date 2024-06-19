@@ -16,6 +16,6 @@
 
     // Finally, destroy the session.
     session_destroy();
-    header("Location: index.php");
+    echo '<meta http-equiv="Refresh" content="0.5, url=../public/index.php">';
     die();
 ?>

@@ -6,8 +6,6 @@
         $sql3 = "SELECT * FROM items WHERE itemID = '$itemid'";
         $result = mysqli_query($conn, $sql3);
         $item = mysqli_fetch_array($result);
-
-
     }
 ?>
 
@@ -52,10 +50,11 @@
             </div>
 
             <hr />
+            <nav class="nav">
             <?php if(!empty($_SESSION['id'])){
                 if($_SESSION['id'] != $item['userID']){ 
                     if($item["exchange"] == "Rent, Sell and Trade"){?>
-                        <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a>
+                        <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Rent</a><br/>
                         <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Buy</a>
                         <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php } elseif($item["exchange"] == "Rent and Sell only"){?>
@@ -74,10 +73,10 @@
                     <?php } elseif($item["exchange"] == "Trade only"){?>
                         <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-info">Trade</a>
                     <?php }?>
-                </main>
-                </div>
-                <?php 
-            }}?>
+            <?php }}?>
+            </nav><br/>
+            
+            <a href="../public/viewWishlist.php?userID=<?php echo $item['userID'];?>" class="btn btn-primary">View Owner Wishlist</a>
+            </main>
+            </div>
         </div>
-    </div>
-    </div>

@@ -16,6 +16,14 @@
                      Redirecting in 2 sec.</div>";
                 echo '<meta http-equiv="Refresh" content="2; url=../admin/categoryAdd.php">';
             }
+            else {
+                echo "<div class='alert alert-danger'>Something went wrong.</div>";
+                echo '<meta http-equiv="Refresh" content="2; url=../admin/categoryAdd.php">';
+            }
+        }
+        else {
+            echo "<div class='alert alert-danger'>Something went wrong.</div>";
+            echo '<meta http-equiv="Refresh" content="2; url=../admin/categoryAdd.php">';
         }
     ?>
     </div>
