@@ -32,7 +32,8 @@
                 <input type="text" name="subCategory" id="subCategory" placeholder="Type in new sub category here" class="form-control">
                 <input type="hidden" name="adminid" value="<?php echo $_SESSION["id"]; ?>"><br/>
                 <div class="form-btn">
-                <input type="submit" value="Add" name="addSub" class="btn btn-primary">
+                    <input type="hidden" value="<?php echo $row["catID"]; ?>" name="catid"> 
+                    <input type="submit" value="Add" name="addSub" class="btn btn-primary">
                 </div>
             </div>
         </form>

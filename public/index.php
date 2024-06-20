@@ -4,7 +4,7 @@
     <div class="row pb-5 mb-4">
         <?php 
             $i = 1;
-            $rows = mysqli_query($conn, "SELECT * FROM items WHERE itemStatus = 'not' ORDER BY dateCreated DESC");
+            $rows = mysqli_query($conn, "SELECT * FROM items WHERE itemStatus = 'available' ORDER BY dateCreated DESC");
             $result = mysqli_fetch_array($rows, MYSQLI_ASSOC);
             if($result){
                 foreach($rows as $row) :

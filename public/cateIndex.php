@@ -6,7 +6,7 @@
             $i = 1;
             $category = $_GET['cate'];
             $rows = mysqli_query($conn, "SELECT * FROM items 
-                WHERE subCat = '$category' AND itemStatus = 'not' 
+                WHERE subCat = '$category' AND itemStatus = 'available' 
                 ORDER BY dateCreated DESC");
             $result = mysqli_fetch_array($rows, MYSQLI_ASSOC);
             if($result){

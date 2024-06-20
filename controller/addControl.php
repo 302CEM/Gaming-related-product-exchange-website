@@ -13,7 +13,7 @@
         $type = $_POST["type"];
         $area = $_POST["area"];
         $information = $_POST["information"];
-        $status = "not";
+        $status = "available";
 
         if(empty($_POST["deposits"])){
             if(empty($_POST["price"])){
@@ -75,7 +75,7 @@
                 $sql = "INSERT INTO items
                         (itemname,itemPicture, mainCat, subCat, exchange, deposit, 
                             price, area, information, itemStatus, userID)
-                        VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                     $stmt = mysqli_stmt_init($conn);
                     $preparestmt = mysqli_stmt_prepare($stmt, $sql);
                     if ($preparestmt){

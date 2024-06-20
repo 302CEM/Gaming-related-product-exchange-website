@@ -22,14 +22,14 @@
                 else{
                 $seachInput = $_POST["searchInput"];
 
-                $rows = mysqli_query($conn, "SELECT * FROM items WHERE (itemStatus = 'not') AND
+                $rows = mysqli_query($conn, "SELECT * FROM items WHERE (itemStatus = 'available') AND
                     MATCH (itemname, mainCat, subCat, exchange, area, information)
                     AGAINST ('$seachInput' IN NATURAL LANGUAGE MODE)");
 
                 /* Previous search sql 
                 $rows = mysqli_query($conn, "SELECT * FROM items WHERE (itemname LIKE '%$seachInput%' OR mainCat LIKE '%$seachInput%'
                     OR subCat LIKE '%$seachInput%' OR exchange LIKE '%$seachInput%' OR area LIKE '%$seachInput%'OR information LIKE '%$seachInput%') 
-                    AND (itemStatus = 'not') ORDER BY dateCreated DESC"); */
+                    AND (itemStatus = 'available') ORDER BY dateCreated DESC"); */
 
                 $result = mysqli_fetch_array($rows, MYSQLI_ASSOC);
                 if($result){
