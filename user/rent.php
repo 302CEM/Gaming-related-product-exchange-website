@@ -21,8 +21,8 @@
             </div>
             <div class="form-group">
                 <label class="form-lable">Remarks: </label>
-                <textarea placeholder="You can write anything that you would like to say/clarify." name="remarks" rows="6" class="form-control">
-                </textarea>
+                <textarea placeholder="You can write anything that you would like to say/clarify." 
+                    name="remarks" rows="6" class="form-control"></textarea>
             </div>
             <div class="form-btn">
                 <input type="hidden" name="statusType" value="rent"><br/>

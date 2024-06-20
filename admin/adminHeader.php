@@ -2,6 +2,15 @@
     session_start();
     include "../database.php";
     $mainNavs = mysqli_query($conn, "SELECT * FROM maincategory ORDER BY catID ASC");
+
+    if(empty($_SESSION['id'])){
+      echo "<div class='alert alert-danger'>Login expired, please login again. Refresh in 1 sec...</div>";
+      echo '<meta http-equiv="Refresh" content="1.5; url=../public/login.php">';
+    }
+    elseif ($_SESSION['role'] != 'admin'){
+      echo "<div class='alert alert-danger'>Non-admin is not allowed. Redirect in 1 sec...</div>";
+      echo '<meta http-equiv="Refresh" content="1.5; url=../public/index.php">';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +40,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
               <?php echo $row["catValue"];?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <?php 
+              <?php
                 $mainNav = $row["catValue"];
                 $subNavs = mysqli_query($conn, "SELECT * FROM subcategory WHERE catValue = '$mainNav'");
                 foreach($subNavs as $sub) :?>
@@ -43,39 +52,18 @@
         <?php endforeach; 
         ?>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Search</a>
+          <a class="nav-link" aria-current="page" href="../public/search.php">Search</a>
         </li>
-        <?php
-            if(empty($_SESSION['username'])){}
-            else {
-                echo "<li class='nav-item'><a class='nav-link' href='../user/addItem.php'>Add item</a></li>";
-            }
-        ?>
+        <li class='nav-item'>
+          <a class='nav-link' href='../user/addItem.php'>Add item</a>
+        </li>
       </ul>
       <span class="navbar-text">
-        <?php
-            if(empty($_SESSION['username'])){
-                echo '<meta http-equiv="Refresh" content="2; url=../public/login.php">';
-            }
-            else {
-                if($_SESSION['role'] == 'admin'){ ?>
-                    <a class='nav-link' href='admin.php' style='margin-left: 20px'>Admin Portal</a></span>
-                    <span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a> 
-                <?php 
-                }else{ ?>
-                    <meta http-equiv="Refresh" content="1; url=../public/index.php">
-                <?php }
-            }
-        ?>
+        <a class='nav-link' href='admin.php' style='margin-left: 20px'>Admin Portal</a></span>
+        <span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a> 
       </span>
       <span class="navbar-text" style ="margin: 0 10px 0 30px; padding-right: 50px;">
-        <?php
-            if(empty($_SESSION['username'])){
-                
-            }
-            else { ?>
-                <a class='nav-link' href='../public/logout.php'>Logout</a>
-            <?php } ?>
+        <a class='nav-link' href='../public/logout.php'>Logout</a>
       </span>
     </div>
   </div>
@@ -89,15 +77,18 @@
       <aside class="col">
         <nav id="sidebarMenu" class="d-lg-block sidebar bg-white" style="max-width: 200px; margin-top: 30px;">
         <div class="list-group list-group-flush mx-0.5 mt-3">
-            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/user.php">
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Normal User page</span>
-            </a>
-            <a class="list-group-item list-group-item-action py-2 ripple" href="admin.php">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Admin Page</span>
-            </a>
-            <a class="list-group-item list-group-item-action py-2 ripple" href="categoryAdd.php">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Add Category</span>
-            </a>
+          <a class="list-group-item list-group-item-action py-2 ripple" href="admin.php">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Admin Page</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple" href="categoryAdd.php">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Add Category</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple" href="allList.php">
+              <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>All Item Listing</span>
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple" href="allOrder.php">
+              <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>All Order Listing</span>
+          </a>
         </div>
         </nav>
       </aside>

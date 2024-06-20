@@ -6,7 +6,7 @@
             require "../controller/requestControl.php";
             $itemid = $_GET["itemid"];
         ?>
-        <form action="buy.php" method="post" enctype="multipart/form-data">
+        <form action="gift.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label class="form-lable">Name: </label>
                 <input type="text" placeholder="Enter your name: " name="requesterName" class="form-control">
@@ -21,7 +21,7 @@
                     name="remarks" rows="6" class="form-control"></textarea>
             </div>
             <div class="form-btn">
-                <input type="hidden" name="statusType" value="buy"><br/>
+                <input type="hidden" name="statusType" value="gift"><br/>
                 <input type="hidden" name="itemid" value="<?php echo $itemid;?>"><br/>
                 <input type="submit" value="Request" name="request" class="btn btn-primary">
             </div>

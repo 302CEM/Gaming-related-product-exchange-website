@@ -49,15 +49,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="form-lable">Rent/Sell/Trade: </label>
+                <label class="form-lable">Rent/Sell/Trade or Gift: </label>
                 <select class="form-select" name="type">
-                    <option selected value="Rent, Sell and Trade">All</option>
+                    <option selected value="Rent, Sell, Trade">All</option>
                     <option value="Rent and Sell only">Rent and Sell only</option>
                     <option value="Rent and Trade only">Rent and Trade only</option>
                     <option value="Sell and Trade only">Sell and Trade only</option>
                     <option value="Rent only">Rent only</option>
                     <option value="Sell only">Sell only</option>
                     <option value="Trade only">Trade only</option>
+                    <option value="Gift">Gift</option>
                 </select>
             </div>
             <div class="form-group" id="deposit">
@@ -76,7 +77,7 @@
             </div>
             <div class="form-group">
                 <label class="form-lable">Additional information: </label>
-                <textarea placeholder="Enter any extra information, like contact details, rent details, how to trade, whishlist etc..." 
+                <textarea placeholder="Enter any extra information, like contact details(email,discord id, etc..) rent details, how to trade, whishlist etc..." 
                     name="information" rows="6" class="form-control"></textarea>
             </div>
             <div class="form-btn">
@@ -87,7 +88,4 @@
     
 
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-<script src="../scripts.js"></script>
 </html>

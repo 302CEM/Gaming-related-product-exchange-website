@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    include "../database.php";
-    $mainNavs = mysqli_query($conn, "SELECT * FROM maincategory ORDER BY catID ASC");
+  session_start();
+  include "../database.php";
+  $mainNavs = mysqli_query($conn, "SELECT * FROM maincategory ORDER BY catID ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,53 +30,45 @@
         <?php foreach($mainNavs as $row) :?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
-              <?php echo $row["catValue"];?></a>
+            <?php echo $row["catValue"];?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <?php 
+              <?php
                 $mainNav = $row["catValue"];
                 $subNavs = mysqli_query($conn, "SELECT * FROM subcategory WHERE catValue = '$mainNav'");
                 foreach($subNavs as $sub) :?>
                 <li><a class="dropdown-item" href="../public/cateIndex.php?cate=<?php echo $sub["subValue"];?>">
                   <?php echo $sub["subValue"];?></a></li>
-              <?php endforeach;  ?>
+              <?php endforeach;?>
             </ul>
-        </li>
-        <?php endforeach; ?>
+        </li><?php endforeach;?>
+
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Search</a>
+          <a class="nav-link" aria-current="page" href="../public/search.php">Search</a>
         </li>
-        <?php
-            if(empty($_SESSION['username'])){}
-            else { ?>
-              <li class="nav-item">
-              <a class="nav-link" href="../user/addItem.php" aria-current="page">Add Item</a>
-            </li>
-            <?php } ?>
+        <?php if(empty($_SESSION['username'])){}
+          else {?>
+            <li class="nav-item">
+            <a class="nav-link" href="../user/addItem.php" aria-current="page">Add Item</a>
+          </li>
+          <?php }?>
       </ul>
       <span class="navbar-text">
-        <?php
-            if(empty($_SESSION['username'])){
-                echo "<a class='nav-link' href='../public/login.php'>Login</a>";
-            }
-            else {
-              if($_SESSION['role'] == 'admin'){
-                echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
-                echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
-              }else{
-                echo "<a class='nav-link' href='../user/user.php'><img src='../logo/user_icon.png' width='50' height='50' ></a>";
-              }        
-            }
-        ?>
+        <?php if(empty($_SESSION['username'])){
+              echo "<a class='nav-link' href='../public/login.php'>Login</a>";
+          }
+          elseif($_SESSION['role'] == 'admin'){
+            echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
+            echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
+          }else{
+            echo "<a class='nav-link' href='../user/user.php'><img src='../logo/user_icon.png' width='50' height='50' ></a>";
+          }?>
       </span>
       <span class="navbar-text" style ='margin: 0 10px 0 30px ;'>
       <?php
-            if(empty($_SESSION['username'])){
-                
-            }
-            else {
-                echo '<a class="nav-link" href="../public/logout.php">Logout</a>';
-            }
-        ?>
+        if(empty($_SESSION['username'])){}
+        else {
+            echo '<a class="nav-link" href="../public/logout.php">Logout</a>';
+        }?>
       </span>
     </div>
   </div>

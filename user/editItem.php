@@ -65,6 +65,7 @@
                     <option value="Rent only">Rent only</option>
                     <option value="Sell only">Sell only</option>
                     <option value="Trade only">Trade only</option>
+                    <option value="Gift">Gift</option>
                 </select>
             </div>
             <div class="form-group" id="deposit">

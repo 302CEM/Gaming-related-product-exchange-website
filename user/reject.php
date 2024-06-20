@@ -10,7 +10,7 @@
         $requestID = $_GET['requestID'];
         $sqlremark = "SELECT * FROM request WHERE requestID = '$requestID' AND ownerID = '$ownerID'";
         $result = mysqli_query($conn, $sqlremark);
-        $requestArr = mysqli_fetch_array($result);
+        $requestArr = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $rowCount = mysqli_num_rows($result);
         if ($rowCount<0){
             echo "<div class='alert alert-danger'>Incorrect user</div>";
@@ -25,6 +25,7 @@
                     class="form-control" style="max-width: 800px;"><?php echo $requestArr['ownerRemarks'];?></textarea>
             </div>
             <input type="hidden" name="requestid" value="<?php echo $requestArr['requestID']; ?>">
+            <input type="hidden" name="itemID" value="<?php echo $requestArr['itemID']; ?>">
             <div class="form-btn">
                 <input type="submit" value="Reject" name="reject" class="btn btn-primary">
             </div>
@@ -37,11 +38,25 @@
         $requestid = $_POST["requestid"];
         $ownerRemarks = $_POST["ownerRemarks"];
         $statusRequest = "reject";
+        $itemID = $_POST["itemID"];
 
         $sql = "UPDATE request SET ownerRemarks = '$ownerRemarks', requestStatus = '$statusRequest' WHERE requestID = '$requestid'";
 
         if(mysqli_query($conn, $sql)) {
             echo "<div class='alert alert-success'>Remark added. Redirecting in 2 sec.</div>";
+            echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
+        }
+        if(mysqli_query($conn, $sql)) {
+            $sql2 = "UPDATE items SET itemStatus = 'available' WHERE itemID = '$itemID'";
+            if(mysqli_query($conn, $sql2)){
+                echo "<div class='alert alert-success'>Remark added. Redirecting in 2 sec.</div>";
+                echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
+            }else{
+                echo "<div class='alert alert-danger'>Something went wrong.</div>";
+                echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
+            } 
+        }else{
+            echo "<div class='alert alert-danger'>Something went wrong.</div>";
             echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
         }
     }

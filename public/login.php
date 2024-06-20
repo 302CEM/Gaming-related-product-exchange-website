@@ -13,8 +13,8 @@
                         $_SESSION['username'] = $login["username"];
                         $_SESSION['id'] = $login["userID"];
                         $_SESSION['role'] = $login["userrole"];
-                        header("Location: index.php");
                         echo "<div class='alert alert-success'>Login successfull</div>";
+                        echo '<meta http-equiv="Refresh" content="1, url=../public/index.php">';
                         die();
                     }
                     else{

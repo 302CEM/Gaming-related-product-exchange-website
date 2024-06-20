@@ -8,7 +8,7 @@
     <?php
         $ownerID = $_SESSION['id'];
         $requestID = $_GET['requestID'];
-        $sqlremark = "SELECT * FROM request WHERE requestID = '$requestID'";
+        $sqlremark = "SELECT * FROM request WHERE requestID = '$requestID' AND ownerID = '$ownerID'";
         $result = mysqli_query($conn, $sqlremark);
         $requestArr = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $rowCount = mysqli_num_rows($result);
@@ -40,14 +40,22 @@
         $ownerRemarks = $_POST["ownerRemarks"];
         $statusRequest = "approve";
         $statusItem = $_POST["requestType"];
+        if($statusItem == "buy"){$statusItem = "sold";}
         $itemID = $_POST["itemID"];
 
         $sql = "UPDATE request SET ownerRemarks = '$ownerRemarks', requestStatus = '$statusRequest' WHERE requestID = '$requestid'";
 
         if(mysqli_query($conn, $sql)) {
             $sql2 = "UPDATE items SET itemStatus = '$statusItem' WHERE itemID = '$itemID'";
-            if(mysqli_query($conn, $sql2))
-            echo "<div class='alert alert-success'>Remark added. Redirecting in 2 sec.</div>";
+            if(mysqli_query($conn, $sql2)){
+                echo "<div class='alert alert-success'>Remark added. Redirecting in 2 sec.</div>";
+                echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
+            }else{
+                echo "<div class='alert alert-danger'>Something went wrong.</div>";
+                echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
+            } 
+        }else{
+            echo "<div class='alert alert-danger'>Something went wrong.</div>";
             echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
         }
     }

@@ -1,7 +1,7 @@
 <?php
     if(empty($_SESSION['id'])){
         echo "<div class='alert alert-danger'>Login expired, please login again. Refresh in 1 sec...</div>";
-        header("refresh:1, url=../public/login.php");
+        echo '<meta http-equiv="Refresh" content="2, url=../public/login.php">';
     }
     else{
     $userId = $_SESSION['id'];
@@ -11,23 +11,34 @@
         $mainCat = $_POST["mainCat"];
         $subCat = $_POST["subCat"];
         $type = $_POST["type"];
-        $price = $_POST["price"];
         $area = $_POST["area"];
         $information = $_POST["information"];
-        $status = "not";
+        $status = "available";
 
         if(empty($_POST["deposits"])){
-            $deposit = "0";
+            if(empty($_POST["price"])){
+                $price = "0";
+                $deposit = "0";
+            }
+            else {
+                $deposit = "0";
+                $price = $_POST["price"];
+            }
+        }
+        else if(empty($_POST["price"])){
+            $price = "0";
+            $deposit = $_POST["deposits"];
         }
         else{
             $deposit = $_POST["deposits"];
+            $price = $_POST["price"];
         }
         $errors = array();
 
         
         if (empty($itemname) OR empty($mainCat) OR empty($subCat) OR 
-            empty($type) OR empty($price) OR empty($area) OR
-            empty($information)) {
+            empty($type) OR empty($price) OR empty($deposit) OR empty($area) 
+            OR empty($information)) {
                 array_push($errors, "All fields are required");
         }
         if (empty($userId)){
@@ -64,7 +75,7 @@
                 $sql = "INSERT INTO items
                         (itemname,itemPicture, mainCat, subCat, exchange, deposit, 
                             price, area, information, itemStatus, userID)
-                        VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                     $stmt = mysqli_stmt_init($conn);
                     $preparestmt = mysqli_stmt_prepare($stmt, $sql);
                     if ($preparestmt){

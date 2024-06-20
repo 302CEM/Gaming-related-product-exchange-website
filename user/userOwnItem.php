@@ -31,7 +31,7 @@
                         $rows = mysqli_query($conn, "SELECT * FROM items WHERE userID = '$userId' ORDER BY userID DESC");
                     }
                     else if ($status == 1){
-                        $rows = mysqli_query($conn, "SELECT * FROM items WHERE userID = '$userId' AND itemStatus = 'not' ORDER BY userID DESC");
+                        $rows = mysqli_query($conn, "SELECT * FROM items WHERE userID = '$userId' AND itemStatus = 'available' ORDER BY userID DESC");
                     }
                     else if ($status == 2){
                         $rows = mysqli_query($conn, "SELECT * FROM items WHERE (userID = '$userId' AND itemStatus = 'buy') OR 

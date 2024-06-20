@@ -2,6 +2,11 @@
     session_start();
     include "../database.php";
     $mainNavs = mysqli_query($conn, "SELECT * FROM maincategory ORDER BY catID ASC");
+
+    if(empty($_SESSION['id'])){
+      echo "<div class='alert alert-danger'>Login expired, please login again. Refresh in 1 sec...</div>";
+      echo '<meta http-equiv="Refresh" content="1.5; url=../public/login.php">';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,19 +36,18 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
               <?php echo $row["catValue"];?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <?php 
+              <?php
                 $mainNav = $row["catValue"];
                 $subNavs = mysqli_query($conn, "SELECT * FROM subcategory WHERE catValue = '$mainNav'");
                 foreach($subNavs as $sub) :?>
                 <li><a class="dropdown-item" href="../public/cateIndex.php?cate=<?php echo $sub["subValue"];?>">
                   <?php echo $sub["subValue"];?></a></li>
-              <?php endforeach;  ?>
+              <?php endforeach;?>
             </ul>
         </li>
-        <?php endforeach; 
-        ?>
+        <?php endforeach;?>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Search</a>
+          <a class="nav-link" aria-current="page" href="../public/search.php">Search</a>
         </li>
         <?php
             if(empty($_SESSION['username'])){
@@ -56,27 +60,16 @@
       </ul>
       <span class="navbar-text">
         <?php
-            if(empty($_SESSION['username'])){
-                echo "<a class='nav-link' href='../public/login.php'>Login</a>";
-            }
-            else {
-              if($_SESSION['role'] == 'admin'){
-                echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
-                echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
-              }else{
-                echo "<a class='nav-link' href='../user/user.php'><img src='../logo/user_icon.png' width='50' height='50' ></a>";
-              }        
-            }
+          if($_SESSION['role'] == 'admin'){
+            echo "<a class='nav-link' href='../admin/admin.php' style='margin-left: 20px'>Admin Portal</a></span>";
+            echo "<span class='navbar-text'><a class='nav-link' href='../user/user.php' style='margin-left: 20px'>User</a>";
+          }else{
+            echo "<a class='nav-link' href='../user/user.php'><img src='../logo/user_icon.png' width='50' height='50' ></a>";
+          }
         ?>
       </span>
       <span class="navbar-text" style ="margin: 0 10px 0 30px; padding-right: 50px;">
-        <?php
-            if(empty($_SESSION['username'])){
-                
-            }
-            else { ?>
-                <a class='nav-link' href='../public/logout.php'>Logout</a>
-            <?php } ?>
+        <a class='nav-link' href='../public/logout.php'>Logout</a>
       </span>
     </div>
   </div>
@@ -90,22 +83,25 @@
         <nav id="sidebarMenu" class="d-lg-block sidebar bg-white" style="max-width: 200px; margin-top: 30px;">
         <div class="list-group list-group-flush mx-0.5 mt-3">
             <a href="../user/user.php" class="list-group-item list-group-item-action py-2 ripple" >
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>User page</span>
+              <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>User page</span>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Own item listing |ALL|</span>
+              <i class="fas fa-chart-area fa-fw me-3"></i><span>Own item listing |ALL|</span>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=1">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Pending approval/No request</span>
+              <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Pending approval/No request</span>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userOwnItem.php?status=2">
-                  <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Approved</span>
+              <i class="fas fa-chart-area fa-fw me-3"></i><span>-- Approved</span>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="../user/userApplication.php">
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>Request To Rent/Buy/Trade </span>
+              <i class="fas fa-chart-area fa-fw me-3"></i><span>Request To Rent/Buy/Trade </span>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="../user/requestList.php" >
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>All orders</span>
+              <i class="fas fa-chart-area fa-fw me-3"></i><span>All orders</span>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="../user/addWishlist.php" >
+              <i class="fas fa-chart-area fa-fw me-3"></i><span>Wishlist</span>
             </a>
         </div>
         </nav>

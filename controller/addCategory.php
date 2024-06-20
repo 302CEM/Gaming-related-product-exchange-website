@@ -2,6 +2,7 @@
 if(isset($_POST["addMain"])){
     $mainCategory = $_POST["mainCategory"];
     $adminid = $_POST["adminid"];
+    $catid = $_POST["catid"];
 
     $errors = array();
 
@@ -24,11 +25,11 @@ if(isset($_POST["addMain"])){
         $checkAdmin = $row['userrole'];
 
         if ($checkAdmin == 'admin'){
-            $sql = "INSERT INTO maincategory (catValue) VALUES (?)";
+            $sql = "INSERT INTO maincategory (catValue, catID) VALUES (?, ?)";
             $stmt = mysqli_stmt_init($conn);
             $preparestmt = mysqli_stmt_prepare($stmt, $sql);
             if ($preparestmt){
-                mysqli_stmt_bind_param($stmt, "s", $mainCategory);
+                mysqli_stmt_bind_param($stmt, "si", $mainCategory, $catid);
                 mysqli_stmt_execute($stmt);
                 echo "<div class='alert alert-success'>Added Succesfully</div>";
                 echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
