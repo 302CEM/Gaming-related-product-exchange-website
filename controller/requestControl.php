@@ -29,18 +29,19 @@
             }
 
             else{
-                $sql1 = "SELECT * FROM users WHERE userID = '$userId'";
+                $sql1 = "SELECT * FROM items WHERE itemID = '$itemID'";
                 $result = mysqli_query($conn, $sql1);
                 $row = mysqli_fetch_array($result);
+                $ownerID = $row["userID"];
 
                 $sql = "INSERT INTO request
-                        (requesterName, contact, remarks, requestType, userId, itemID)
-                        VALUES (?, ?, ?, ?, ?, ?)";
+                        (requesterName, contact, remarks, requestType, userId, itemID, ownerID)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($conn);
                     $preparestmt = mysqli_stmt_prepare($stmt, $sql);
                     if ($preparestmt){
-                        mysqli_stmt_bind_param($stmt, "ssssii", 
-                            $requesterName, $contact, $remarks, $requestType, $userId, $itemID);
+                        mysqli_stmt_bind_param($stmt, "ssssiii", 
+                            $requesterName, $contact, $remarks, $requestType, $userId, $itemID, $ownerID);
                         mysqli_stmt_execute($stmt);
                         echo "<div class='alert alert-success'>Apply Succesfully</div>";
                         echo '<meta http-equiv="Refresh" content="1; url=../public/index.php">';

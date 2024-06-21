@@ -6,13 +6,12 @@
         $sql1 = "SELECT * FROM users WHERE userID = '$userID'";
         $result = mysqli_query($conn, $sql1);
         $item = mysqli_fetch_array($result);
-    }
-?>
-<main class="col-lg-10">
-    <div class="ps">
+    }?>
+    
+<main class="col-lg-10"><div class="ps">
         <br/><br/><h1><?php echo $item["username"]; ?>'s Wishlist</h1>
-    </div>
-</main>
+    </div></main>
+
 <div class="container-xxl py-5">
     <table class="table table-striped" style="max-width: 1180px;">
         <thead><tr>
@@ -21,7 +20,6 @@
             <td><b>Wish Item Name</b></td>
             <td><b>Wish Remarks</b></td>
         </tr></thead>
-
         <tbody class="table-group-divider">
             <?php
                 $i = 1;

@@ -12,7 +12,7 @@
         if (count($errors) > 0){
             foreach ($errors as $error){
                 echo "<div class='alert alert-danger'>$error Redirecting...</div>";
-                echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                echo '<meta http-equiv="Refresh" content="2, url=../user/addWishlist.php">';
             }
         }
 
@@ -47,7 +47,7 @@
         if (count($errors) > 0){
             foreach ($errors as $error){
                 echo "<div class='alert alert-danger'>$error Redirecting...</div>";
-                echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                echo '<meta http-equiv="Refresh" content="2, url=../admin/addWishlist.php">';
             }
         }
 

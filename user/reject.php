@@ -43,10 +43,6 @@
         $sql = "UPDATE request SET ownerRemarks = '$ownerRemarks', requestStatus = '$statusRequest' WHERE requestID = '$requestid'";
 
         if(mysqli_query($conn, $sql)) {
-            echo "<div class='alert alert-success'>Remark added. Redirecting in 2 sec.</div>";
-            echo '<meta http-equiv="Refresh" content="2; url=../user/requestList.php">';
-        }
-        if(mysqli_query($conn, $sql)) {
             $sql2 = "UPDATE items SET itemStatus = 'available' WHERE itemID = '$itemID'";
             if(mysqli_query($conn, $sql2)){
                 echo "<div class='alert alert-success'>Remark added. Redirecting in 2 sec.</div>";

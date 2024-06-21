@@ -15,7 +15,7 @@
                 <td><b>Item Type</b></td>
                 <td><b>Request Type</b></td>
                 <td><b>Request Status</b></td>
-                <td><b>Requester Comments(you)</b></td>
+                <td><b>Requester Comments</b></td>
                 <td><b>Owner Comments</b></td>
             </tr>
         </thead>

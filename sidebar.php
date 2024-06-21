@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Hobby-a gaming-related-product exchange website</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -72,9 +72,7 @@
         <a class='nav-link' href='../public/logout.php'>Logout</a>
       </span>
     </div>
-  </div>
-</nav>
-</header>
+  </div></nav></header>
 
 <body>
 <div class="container" style="margin-top: 50;">
@@ -104,10 +102,8 @@
               <i class="fas fa-chart-area fa-fw me-3"></i><span>Wishlist</span>
             </a>
         </div>
-        </nav>
-      </aside>
-      </div>
-</div>
+        </nav></aside>
+      </div></div>
       
       <!--<main class="col-lg-10">
         <div class="ps-lg-12">

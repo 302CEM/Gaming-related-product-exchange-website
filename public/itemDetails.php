@@ -28,32 +28,29 @@
             <dt class="col-3">Category:</dt>
             <dd class="col-9"><?php echo $item["mainCat"]; ?>/<?php echo $item["subCat"]; ?></dd>
 
-            <dt class="col-3">Rent/Sell/Trade</dt>
+            <dt class="col-3">Rent/Sell/Trade: </dt>
             <dd class="col-9"><?php echo $item["exchange"]; ?></dd>
 
             <?php 
               if ($item["deposit"] = "0"){ ?>
-                <dt class="col-3">Deposit</dt>
+                <dt class="col-3">Deposit: </dt>
                 <dd class="col-9"><?php echo $item["deposit"]; ?></dd>
-            <?php
-              }
-            ?>
+            <?php }?>
 
-            <dt class="col-3">Price</dt>
+            <dt class="col-3">Price: </dt>
             <dd class="col-9"><?php echo $item["price"]; ?></dd>
 
-            <dt class="col-3">Available area to trade/sell/rent</dt>
+            <dt class="col-3">Available area to trade/sell/rent: </dt>
             <dd class="col-9"><?php echo $item["area"]; ?></dd>
 
-            <dt class="col-3">Post Created date</dt>
+            <dt class="col-3">Post Created date: </dt>
             <dd class="col-9"><?php echo $item["dateCreated"]; ?></dd>
-            </div>
+            </div><hr />
 
-            <hr />
             <nav class="nav">
             <?php if(!empty($_SESSION['id'])){
                 if($_SESSION['id'] != $item['userID']){ 
-                    if($item["exchange"] == "Rent, Sell and Trade"){?>
+                    if($item["exchange"] == "Rent, Sell, Trade"){?>
                         <a href="../user/rent.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-primary">Rent</a>&nbsp;&nbsp;&nbsp;
                         <a href="../user/buy.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-primary">Buy</a>&nbsp;&nbsp;&nbsp;
                         <a href="../user/trade.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-primary">Trade</a>&nbsp;&nbsp;&nbsp;
@@ -76,9 +73,9 @@
                         <a href="../user/gift.php?itemid=<?php echo $item["itemID"];?>" class="btn btn-primary">Request</a>&nbsp;
                     <?php }?>
                     </nav><br/>
-                    <a href="../public/viewWishlist.php?userID=<?php echo $item['userID'];?>" class="btn btn-secondary">View Owner Wishlist</a>
+                    
             <?php }}?>
-            
+            <a href="../public/viewWishlist.php?userID=<?php echo $item['userID'];?>" class="btn btn-secondary">View Owner Wishlist</a>
             </main>
             </div>
         </div>

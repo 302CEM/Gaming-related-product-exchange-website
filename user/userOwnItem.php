@@ -52,7 +52,7 @@
                     <a href="../public/itemDetails.php?itemid=<?php echo $row['itemID'];?>" class="btn btn-info">View More</a>
                     <a href="../user/editItem.php?itemid=<?php echo $row["itemID"]; ?>" class="btn btn-warning">Edit</a>
                     <a href="../user/deleteItem.php?itemid=<?php echo $row["itemID"]; ?>" class="btn btn-danger">Delete</a>
-                    <a href="../user/showApplication.php?itemid=<?php echo $row["itemID"]; ?>" class="btn btn-secondary">Application</a>
+                    <a href="../user/showApplication.php?itemid=<?php echo $row["itemID"]; ?>" class="btn btn-secondary">Request</a>
                 </td>
             </tr>
             <?php endforeach; }  ?>
