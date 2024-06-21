@@ -12,7 +12,6 @@
         $mainCat = $_POST["mainCat"];
         $subCat = $_POST["subCat"];
         $type = $_POST["type"];
-        $price = $_POST["price"];
         $area = $_POST["area"];
         $information = $_POST["information"];
 
@@ -20,12 +19,10 @@
             echo '<a href=\"javascript:history.go(-1)\">Error. Please click here to GO BACK</a>';
             die("Item ID is missing...");
         }
-        if(empty($_POST["deposits"])){
-            $deposit = "0";
-        }
-        else{
-            $deposit = $_POST["deposits"];
-        }
+        $price = $_POST["price"];
+        $deposit = $_POST["deposits"];
+        if(empty($price)){$price = "RM0";}
+        if(empty($deposit)){$deposit = "RM0";}
         $errors = array();
 
         

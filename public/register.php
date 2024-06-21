@@ -9,9 +9,7 @@
 </head>
 <body>
     <div class = "container">
-        <?php
-            require "../controller/registerControl.php";
-        ?>
+        <?php require "../controller/registerControl.php";?>
         <h1>Register</h1><br/>
         <form action="register.php" method="post">
             <div class="form-group">
@@ -22,9 +20,7 @@
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password:">
-                <span id="passwordHelpInline" class="form-text">
-                    Must be more than 8 characters long.
-                </span>
+                <span id="passwordHelpInline" class="form-text">Must be more than 8 characters long.</span>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="conf_password" placeholder="Confirm Password:">
@@ -33,9 +29,7 @@
                 <input type="submit" class="btn btn-primary" value="Register" name="submit">
             </div>
             <br/><span id="linkToLoginPage" class="form-text">
-                Already have an account? Click <a href="../public/login.php">HERE</a> to login.
-            </span>
-            
+                Already have an account? Click <a href="../public/login.php">HERE</a> to login.</span>   
         </form>
     </div>
 </body>

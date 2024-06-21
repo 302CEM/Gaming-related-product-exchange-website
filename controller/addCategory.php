@@ -12,7 +12,7 @@ if(isset($_POST["addMain"])){
     if (count($errors) > 0){
         foreach ($errors as $error){
             echo "<div class='alert alert-danger'>$error Redirecting...</div>";
-            echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+            echo '<meta http-equiv="Refresh" content="2, url=../user/addWishlist.php">';
         }
     }
 
@@ -32,7 +32,7 @@ if(isset($_POST["addMain"])){
                 mysqli_stmt_bind_param($stmt, "si", $mainCategory, $catid);
                 mysqli_stmt_execute($stmt);
                 echo "<div class='alert alert-success'>Added Succesfully</div>";
-                echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                echo '<meta http-equiv="Refresh" content="2, url=../user/addWishlist.php">';
 
             }else{
                 echo "<div class='alert alert-danger'>Something went wrong.</div>";
@@ -59,7 +59,7 @@ if(isset($_POST["addMain"])){
         if (count($errors) > 0){
             foreach ($errors as $error){
                 echo "<div class='alert alert-danger'>$error Redirecting...</div>";
-                echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                echo '<meta http-equiv="Refresh" content="2, url=../user/addWishlist.php">';
             }
         }
 
@@ -80,7 +80,7 @@ if(isset($_POST["addMain"])){
                     mysqli_stmt_bind_param($stmt, "ss", $mainCategory, $subCategory);
                     mysqli_stmt_execute($stmt);
                     echo "<div class='alert alert-success'>Added Succesfully</div>";
-                    echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                    echo '<meta http-equiv="Refresh" content="2, url=../user/addWishlist.php">';
 
                 }else{
                     echo "<div class='alert alert-danger'>Something went wrong.</div>";

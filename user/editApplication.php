@@ -22,8 +22,8 @@
             </div>
             <div class="form-group">
                 <label class="form-lable">Remarks: </label>
-                <textarea placeholder="You can write anything that you would like to say/clarify." name="remarks" rows="6" class="form-control">
-                <?php echo $requestItem["remarks"];?></textarea>
+                <textarea placeholder="You can write anything that you would like to say/clarify." 
+                name="remarks" rows="6" class="form-control"><?php echo $requestItem["remarks"];?></textarea>
             </div>
             <div class="form-group">
                 <label class="form-lable">Request Type: </label>

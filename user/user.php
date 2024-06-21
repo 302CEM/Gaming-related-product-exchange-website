@@ -30,11 +30,8 @@
     <div class="form-btn">
         <input type="submit" value="Edit" name="editUser" class="btn btn-primary">
     </div>
-</form>
-<?php } ?>
+</form><?php } ?>
 </main>
-
 </div>
-    
 </div>
 </body>

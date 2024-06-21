@@ -15,24 +15,11 @@
         $information = $_POST["information"];
         $status = "available";
 
-        if(empty($_POST["deposits"])){
-            if(empty($_POST["price"])){
-                $price = "0";
-                $deposit = "0";
-            }
-            else {
-                $deposit = "0";
-                $price = $_POST["price"];
-            }
-        }
-        else if(empty($_POST["price"])){
-            $price = "0";
-            $deposit = $_POST["deposits"];
-        }
-        else{
-            $deposit = $_POST["deposits"];
-            $price = $_POST["price"];
-        }
+        $price = $_POST["price"];
+        $deposit = $_POST["deposits"];
+        if(empty($price)){$price = "RM0";}
+        if(empty($deposit)){$deposit = "RM0";}
+
         $errors = array();
 
         

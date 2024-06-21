@@ -11,12 +11,10 @@
             $subID = $_GET["subID"];
             $mainCatSql = "SELECT * FROM maincategory ORDER BY catValue ASC";
             $mainCatRows = mysqli_query($conn, $mainCatSql);
-            //$mainCatRows = mysqli_fetch_array($result1);
 
             $subCatSql = "SELECT * FROM subcategory WHERE subID = '$subID'";
             $result2 = mysqli_query($conn, $subCatSql);
             $subCatRows = mysqli_fetch_array($result2);
-
         ?>
         <form action="editCat.php" method="post" enctype="multipart/form-data" style="max-width: 1180px;">
             <div class="form-group">

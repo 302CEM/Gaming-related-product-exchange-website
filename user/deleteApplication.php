@@ -9,8 +9,9 @@
     <?php
         if (isset($_GET["requestID"])){
             $requestID = $_GET["requestID"];
+            $userId = $_SESSION['id'];
     
-            $sql = "DELETE FROM request WHERE requestID = '$requestID'";
+            $sql = "DELETE FROM request WHERE requestID = '$requestID' AND userId ='$userId'";
             if(mysqli_query($conn, $sql)) {
                 echo "<div class='alert alert-success'>Deleted Succesfully.
                      Redirecting in 2 sec.</div>";

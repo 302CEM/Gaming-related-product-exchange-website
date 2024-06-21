@@ -16,7 +16,7 @@
         if (count($errors) > 0){
             foreach ($errors as $error){
                 echo "<div class='alert alert-danger'>$error Redirecting...</div>";
-                echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                echo '<meta http-equiv="Refresh" content="2, url=../admin/admin.php">';
             }
         }
 
@@ -33,7 +33,7 @@
                 $sql2 = "UPDATE subcategory SET catValue = '$mainCategory', subValue = '$subCategory' WHERE subID = '$subid'";
                 if (mysqli_query($conn, $sql2)){
                     echo "<div class='alert alert-success'>Edited Succesfully</div>";
-                    echo '<meta http-equiv="Refresh" content="2, url=../admin/categoryAdd.php">';
+                    echo '<meta http-equiv="Refresh" content="2, url=../admin/admin.php">';
 
                 }else{
                     echo "<div class='alert alert-danger'>Something went wrong.</div>";

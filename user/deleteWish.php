@@ -9,8 +9,9 @@
     <?php
         if (isset($_GET["wishID"])){
             $wishID = $_GET["wishID"];
+            $userId = $_SESSION['id'];
     
-            $sql = "DELETE FROM wishlist WHERE wishID = '$wishID'";
+            $sql = "DELETE FROM wishlist WHERE wishID = '$wishID' AND userID ='$userId'";
             if(mysqli_query($conn, $sql)) {
                 echo "<div class='alert alert-success'>Deleted Succesfully.
                      Redirecting in 2 sec.</div>";

@@ -1,7 +1,7 @@
 <?php require "../sidebar.php"; ?>
 <main class="col-lg-12 bg-white">
         <div class="ps-lg-12">
-            <br/><br/><h1>Your Orders listing</h1>
+            <br/><br/><h1>All your item listing's requests</h1>
         </div>
 <div class="container-fluid" >
     <table class="table table-striped" style="max-width: 2100px;">
